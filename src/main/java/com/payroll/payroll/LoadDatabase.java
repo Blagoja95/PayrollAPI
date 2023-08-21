@@ -7,17 +7,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-class LoadDatabase {
+class LoadDatabase
+{
+	private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
-    private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
+	@Bean
+	CommandLineRunner initDatabase(EmployeeRopository repository)
+	{
 
-    @Bean
-    CommandLineRunner initDatabase(EmployeeRopository repository) {
-
-        return args -> {
-            log.info("Preloading " + repository.save(new Employee("Jovan Jovanovic", "Employee")));
-            log.info("Preloading " + repository.save(new Employee("Petar Petrovic", "Boss")));
-            log.info("Preloading " + repository.save(new Employee("Marko Markovic", "HR")));
-        };
-    }
+		return args -> {
+			log.info("Preloading " + repository.save(new Employee("Jovan Jovanovic", "Employee")));
+			log.info("Preloading " + repository.save(new Employee("Petar Petrovic", "Boss")));
+			log.info("Preloading " + repository.save(new Employee("Marko Markovic", "HR")));
+		};
+	}
 }
