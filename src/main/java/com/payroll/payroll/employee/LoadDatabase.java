@@ -1,4 +1,4 @@
-package com.payroll.payroll;
+package com.payroll.payroll.employee;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
